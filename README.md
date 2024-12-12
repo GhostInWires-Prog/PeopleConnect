@@ -3,7 +3,8 @@
 Purpose Of The Project Is To Provide Easy Services To The People Out There 
  
                                                                **Project name **
-                                                                PeopleConnect
+PeopleConnect
+                                                                
                                                          **Vision and mission statement**
 Basic Vision Is To Solve Daily Life Problems Present Around And Organizational Event Is To Grow This Idea's Hype Upto Max In A Major Single City Of Pakistan First After Eradicating This Issue There Our Mission Will Be To Diversify This To Everywhere In Pakistan
 
@@ -18,8 +19,4 @@ Initially It'll Launch On Play Store And On Live Server Having Functionalities A
 5)Request For Service
 6)Request Received To The Service Provider
 7)Service Details
-
-
-
-
-                                                   **Success criteria**
+                                            
