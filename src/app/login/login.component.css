@@ -5,13 +5,14 @@ html, body {
   height: 100%;
   overflow: hidden;
 }
+
 .bluebox {
   width: 35vw;
   height: 90vh;
   background: rgba(37,107,107,1);
   position: absolute;
   top: 5%;
-  left: 50%;
+  left: 80%;
   transform: translateX(-50%);
   border-radius: 15px;
   box-shadow: 10px 17px 4px rgba(0, 151 , 130, 0.25);
@@ -28,6 +29,7 @@ html, body {
   left: 0;
   z-index: 0;
 }
+
 .Logo {
   width: 20%;
   height: auto;
@@ -35,15 +37,160 @@ html, body {
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 2;
 }
+
 .Logo img {
   width: 100%;
   height: auto;
+  z-index: 2;
 }
+
+.LoginText {
+  width: 231px;
+  color: rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 8%;
+  left: 70%;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  opacity: 1;
+  z-index: 3;
+  text-align: center;
+}
+
+.Email {
+  width: 156px;
+  color: rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 23%;
+  left: 63%;
+  font-family: Inter;
+  font-size: 16px;
+  opacity: 1;
+  text-align: center;
+  z-index: 3;
+}
+.Logintextbox {
+  width: 331px;
+  height: 48px;
+  background: rgba(217, 217, 217, 1);
+  opacity: 1;
+  position: absolute;
+  top: 30%;
+  left: 66%;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  overflow: hidden;
+  z-index: 3;
+}
+.Password
+{
+  width: 156px;
+  color: rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 43%;
+  left: 63%;
+  font-family: Inter;
+  font-size: 16px;
+  opacity: 1;
+  text-align: center;
+  z-index: 3;
+}
+.Passwordtextbox
+{
+  width: 331px;
+  height: 48px;
+  background: rgba(217, 217, 217, 1);
+  opacity: 1;
+  position: absolute;
+  top: 49%;
+  left: 66%;
+  border-top-left-radius: 40px;
+  border-top-right-radius: 40px;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  overflow: hidden;
+  z-index: 3;
+}
+.loginbutton
+{
+  width: 185px;
+  height: 64px;
+  background: rgba(0, 0, 0, 1);
+  opacity: 1;
+  position: absolute;
+  top: 62%;
+  left: 73%;
+  border-top-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: hidden;
+  z-index: 3;
+
+}
+#login {
+  width: 231px;
+  color: rgba(255, 255, 255, 1);
+  position: absolute;
+  top: 10%;
+  left: -14%;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 28px;
+  line-height: 1.4;
+  letter-spacing: 1px;
+  opacity: 1;
+  z-index: 3;
+  text-align: center;
+}
+.blackbox
+{
+  width: 263px;
+  height: 46px;
+  background: rgba(0, 0, 0, 1);
+  opacity: 1;
+  position: absolute;
+  top: 77%;
+  left: 70%;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
+  overflow: hidden;
+  z-index: 3;
+}
+.tag
+{
+  width: 173px;
+  color: rgba(251, 251, 251, 1);
+  position: absolute;
+  top: 30%  ;
+  left: 16%;
+  font-family: Inter;
+  font-size: 16px;
+  opacity: 1;
+  text-align: center;
+}
+
+
+
 @media (max-width: 768px) {
   .bluebox {
     width: 80vw;
     height: 70vh;
+  }
+
+  .LoginText {
+    width: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 22px;
+    text-align: center;
   }
 
   .Logo {
@@ -51,13 +198,43 @@ html, body {
   }
 }
 
+/* Responsive Design for Small Phones */
 @media (max-width: 480px) {
   .bluebox {
     width: 90vw;
     height: 60vh;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .LoginText {
+    width: 180px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 16px; /* Reduced for smaller screens */
+    line-height: 1.2;
+    text-align: center;
+    letter-spacing: 0.5px; /* Reduced spacing for smaller text */
   }
 
   .Logo {
     width: 40%;
+    top: 5%;
+  }
+}
+
+/* Responsive Design for Extra Small Phones */
+@media (max-width: 360px) {
+  .LoginText {
+    width: 150px;
+    font-size: 14px; /* Further reduced for very small screens */
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  .Logo {
+    width: 50%;
+    top: 5%;
   }
 }
