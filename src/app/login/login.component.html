@@ -8,7 +8,6 @@
 
 </header>
 <main>
-
   <div class="bluebox"></div>
   <div class="black"></div>
   <div class="Logo">
@@ -24,9 +23,7 @@
     <div class="Password">Password</div>
     <input type="password" class="Passwordtextbox" id="passwordtext" name="passwordtext" #passwordtext="ngModel" [(ngModel)]="model.password" required [ngClass]="{'is-invalid': passwordtext.touched && passwordtext.invalid}"/>
     <div *ngIf="passwordtext.errors?.['required'] && passwordtext.touched" class="EnterPassword">Password required</div>
-
     <button type="submit" class="loginbutton" [disabled]="connectpeopleform.invalid"><div id="login">SignIn</div></button>
-
     <div class="blackbox">
       <span class="tag">Need Registration?</span>
     </div>
