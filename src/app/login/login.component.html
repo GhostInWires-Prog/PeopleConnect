@@ -1,33 +1,59 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-<header>
+<div class="form-container">
+  <div class="form-header">Login</div>
 
-</header>
-<main>
-  <div class="bluebox"></div>
-  <div class="black"></div>
-  <div class="Logo">
-    <img src="src/logs.gif">
-  </div>
-  <form #connectpeopleform="ngForm" (ngSubmit)="OnSubmit(connectpeopleform)" novalidate>
-    <!--  Input Fields-->
-    <div class="LoginText">LOGIN</div>
-    <div class="Email">Email / ID</div>
-    <input type="email" class="Logintextbox" id="email" name="email" #email="ngModel" [(ngModel)]="model.email" required email [ngClass]="{'is-invalid': email.touched && email.invalid}" />
-    <div *ngIf="email.errors?.['required'] && email.touched" class="EmailInvalid">Email is required.</div>
-
-    <div class="Password">Password</div>
-    <input type="password" class="Passwordtextbox" id="passwordtext" name="passwordtext" #passwordtext="ngModel" [(ngModel)]="model.password" required [ngClass]="{'is-invalid': passwordtext.touched && passwordtext.invalid}"/>
-    <div *ngIf="passwordtext.errors?.['required'] && passwordtext.touched" class="EnterPassword">Password required</div>
-    <button type="submit" class="loginbutton" [disabled]="connectpeopleform.invalid"><div id="login">SignIn</div></button>
-    <div class="blackbox">
-      <span class="tag">Need Registration?</span>
+  <form #loginForm="ngForm" (ngSubmit)="OnSubmit(loginForm)" novalidate>
+    <!-- Email -->
+    <div class="input-container">
+      <input type="email" id="email" name="email" placeholder=" " #email="ngModel" [(ngModel)]="model.email" required email [ngClass]="{'is-invalid': email.touched && email.invalid}" />
+      <label for="email">Email / ID</label>
+      <div *ngIf="email.errors?.['required'] && email.touched" class="EmailInvalid">Email is required.</div>
     </div>
+
+    <!-- Password -->
+    <div class="input-container">
+      <input type="password" id="password" name="password" placeholder=" " #passwordtext="ngModel" [(ngModel)]="model.password" required [ngClass]="{'is-invalid': passwordtext.touched && passwordtext.invalid}"/>
+      <label for="password">Password</label>
+      <div *ngIf="passwordtext.errors?.['required'] && passwordtext.touched" class="EnterPassword">Password required</div>
+    </div>
+
+    <!-- Submit Button -->
+    <button type="submit" class="submit-btn" [disabled]="loginForm.invalid">Sign In</button>
   </form>
-</main>
+
+  <!-- Link -->
+  <div class="link-container">
+    <a routerLink="/registration">Need Registration?</a>
+  </div>
+</div>
+
+<div class="Googlebutton">
+  <div id="g_id_onload"
+       data-client_id="699501291512-n6j2errb6dtsinsb7ovp404v7uagtv3a.apps.googleusercontent.com"
+       data-context="signin"
+       data-ux_mode="popup"
+       data-login_uri="http://localhost:3000/api/login"
+       data-auto_select="true"
+       data-itp_support="true">
+  </div>
+
+
+  <div class="g_id_signin"
+       data-type="standard"
+       data-shape="pill"
+       data-theme="filled_black"
+       data-text="signin_with"
+       data-size="large"
+       data-logo_alignment="left">
+  </div>
+</div>
 </body>
 </html>
