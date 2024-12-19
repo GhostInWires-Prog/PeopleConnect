@@ -1,0 +1,112 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #2C3E50, #4CA1AF);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  color: #333;
+}
+
+/* Form Container */
+.form-container {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+  width: 400px;
+}
+
+/* Header */
+.form-header {
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #2C3E50;
+  margin-bottom: 1.5rem;
+}
+
+/* Input Container */
+.input-container {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+input {
+  width: 100%;
+  padding: 10px 10px 10px 5px;
+  font-size: 1rem;
+  border: none;
+  border-bottom: 2px solid #aaa;
+  outline: none;
+  background: transparent;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #4CA1AF;
+}
+
+/* Floating Labels */
+label {
+  position: absolute;
+  top: 10px;
+  left: 5px;
+  font-size: 1rem;
+  color: #aaa;
+  pointer-events: none;
+  transition: 0.3s ease all;
+}
+
+input:focus ~ label,
+input:not(:placeholder-shown) ~ label {
+  top: -12px;
+  font-size: 0.85rem;
+  color: #4CA1AF;
+}
+
+/* Buttons */
+.submit-btn {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(135deg, #4CA1AF, #2C3E50);
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* Already Registered */
+.link-container {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.link-container a {
+  text-decoration: none;
+  color: #4CA1AF;
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .form-container {
+    width: 90%;
+    padding: 1.5rem;
+  }
+}

@@ -1,0 +1,62 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+  <title>Registration</title>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+<header>
+</header>
+<main>
+  <body>
+  <div class="form-container">
+    <div class="form-header">Register</div>
+
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)" novalidate>
+      <!-- Email -->
+      <div class="input-container">
+        <input type="email" id="email" name="email" placeholder=" " #email="ngModel" [(ngModel)]="model.email" required email [ngClass]="{'is-invalid': email.touched && email.invalid}" />
+        <div *ngIf="email.errors?.['required'] && email.touched" class="EmailInvalid">Email is required.</div>
+        <label for="email">Email</label>
+      </div>
+
+      <!-- Password -->
+      <div class="input-container">
+        <input type="password" id="password" name="password" placeholder=" " #password="ngModel" [(ngModel)]="model.password" required minlength="6" [ngClass]="{'is-invalid': password.touched && password.invalid}" />
+        <div *ngIf="password.errors?.['required'] && password.touched" class="EnterPassword">Password required</div>
+        <div *ngIf="password.errors?.['minlength'] && password.touched" class="EnterPassword">Minimum 6 characters</div>
+        <label for="password">Password</label>
+      </div>
+
+
+      <!-- Confirm Password -->
+      <div class="input-container">
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder=" " #confirmPassword="ngModel" [(ngModel)]="model.confirmPassword" required [ngClass]="{'is-invalid': confirmPassword.touched && confirmPassword.invalid}"/>
+        <label for="confirmPassword">Confirm Password</label>
+        <div *ngIf="confirmPassword.errors?.['required'] && confirmPassword.touched">Confirm password is required.</div>
+        <div *ngIf="model.password !== model.confirmPassword && confirmPassword.touched" class="error match">
+          Passwords do not match.
+        </div>
+      </div>
+
+
+      <!-- Full Name -->
+      <div class="input-container">
+        <input type="text" id="fullname" name="fullname" placeholder=" "  #fullname="ngModel" [(ngModel)]="model.fullname" required [ngClass]="{'is-invalid': fullname.touched && fullname.invalid}" />
+        <label for="fullname">Full Name</label>
+        <div *ngIf="fullname.errors?.['required'] && fullname.touched" class="Nameinvalid">Full Name required.</div>
+      </div>
+
+      <!-- Submit Button -->
+      <button type="submit" class="submit-btn" [disabled]="registerForm.invalid">Sign Up</button>
+    </form>
+
+    <!-- Link -->
+    <div class="link-container">
+      <a routerLink="/login">Already Registered?</a>
+    </div>
+  </div>
+  </body>
+</main>
+</body>
+</html>
