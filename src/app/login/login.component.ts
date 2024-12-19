@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {FormsModule, NgForm} from '@angular/forms';
 import {RouterLink, RouterOutlet} from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -16,13 +17,19 @@ export class LoginComponent {
     email: '',
     password: ''
   };
+  constructor(private http: HttpClient) {}
   OnSubmit(form: NgForm) {
     if (form.invalid) {
       console.log("Form Invalid");
       form.control.markAllAsTouched();
       return;
     }
-    console.log("Form Submitted", this.model);
+    this.http.post('http://localhost:3000/api/login', this.model)
+      .subscribe({
+        next: (response) => console.log("Form Submitted Successfully", response),
+        error: (error) => console.error("Error Submitting Form", error)
+      });
   }
+
 
 }
