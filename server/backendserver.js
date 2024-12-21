@@ -24,10 +24,44 @@ const UserSchema = new mongoose.Schema({
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
 });
-
-const User = mongoose.model('user', UserSchema);
+const UserSchemaForRegistration = new mongoose.Schema({
+  email: { type: String, required: true, unique: true },
+  password: { type: String, required: true },
+  fullname: { type: String, required: true },
+});
+const User = mongoose.model('users', UserSchema);
+const RUser = mongoose.model('registrations', UserSchemaForRegistration);
 
 // Routes
+
+// Register Endpoint
+app.post('/api/register', async (req, res) => {
+  const { email, password, fullname } = req.body;
+
+  // Validate input
+  if (!email || !password || !fullname) {
+    return res.status(400).send('All fields are required');
+  }
+console.log(RUser.email)
+  try {
+    // Check if user already exists in registrations
+    const existingUser = await RUser.findOne({ email });
+    if (existingUser) {
+      return res.status(400).send('Email is already registered');
+    }
+    console.log(email);
+
+    // Create a new user using the RUser model
+    const registrations = new RUser({ email, password, fullname });
+    await registrations.save();
+    res.status(201).send({ message: 'User registered successfully', registrations });
+  } catch (error) {
+    console.error('Error saving user:', error);
+    res.status(500).send({ message: 'Error saving user', error });
+  }
+});
+
+// Login Endpoint
 app.post('/api/login', async (req, res) => {
   const { email, password } = req.body;
 
@@ -35,13 +69,24 @@ app.post('/api/login', async (req, res) => {
     return res.status(400).send('Email and Password are required');
   }
 
-  // Save user data
   try {
-    const user = new User({ email, password });
-    await user.save();
-    res.status(201).send({ message: 'User saved successfully', user });
+    // Check if the user exists in the registrations collection
+    const user = await RUser.findOne({ email, password });
+
+
+
+    if (!user) {
+      return res.status(401).send('Invalid email or password');
+    }
+
+    // If user is found, return user data (excluding password for security)
+    const { password: userPassword, ...userDetails } = user.toObject();
+    res.status(200).send({ message: 'Login successful', User: user });
+    const users =new User({email,password})
+    await users.save();
   } catch (error) {
-    res.status(500).send({ message: 'Error saving user', error });
+    console.error('Error logging in:', error);
+    res.status(500).send({ message: 'Error logging in', error });
   }
 });
 

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {CommonModule, NgOptimizedImage} from '@angular/common';
-import {FormsModule, NgForm} from '@angular/forms';
-import {RouterLink, RouterOutlet} from '@angular/router';
+import { CommonModule, NgOptimizedImage } from '@angular/common';
+import { FormsModule, NgForm } from '@angular/forms';
+import { Router, RouterLink, RouterOutlet } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -17,19 +17,22 @@ export class LoginComponent {
     email: '',
     password: ''
   };
-  constructor(private http: HttpClient) {}
-  OnSubmit(form: NgForm) {
+
+  constructor(private http: HttpClient, private router: Router) {}
+
+  async OnSubmit(form: NgForm) {
     if (form.invalid) {
       console.log("Form Invalid");
       form.control.markAllAsTouched();
       return;
     }
-    this.http.post('http://localhost:3000/api/login', this.model)
-      .subscribe({
-        next: (response) => console.log("Form Submitted Successfully", response),
-        error: (error) => console.error("Error Submitting Form", error)
-      });
+    try {
+      const response = await this.http.post('http://localhost:3000/api/login', this.model).toPromise();
+      console.log(response);
+      alert('Login Successful!');
+      await this.router.navigate(['/landingpage']); // Redirect after login
+    } catch (error: any) {
+      alert('Login Failed: ' + error.error.message);
+    }
   }
-
-
 }
